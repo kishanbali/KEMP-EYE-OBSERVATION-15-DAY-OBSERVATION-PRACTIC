@@ -2,258 +2,463 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#05060b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-<title>KEMP EYE RESONANCE 👁</title>
+<title>KEMP EYE REVERBERANCE 👁 — 15-DAY Reverberance PRACTICE</title>
 
 <style>
-* {
-  box-sizing: border-box;
+:root{
+  --bg:#05060b;
+  --panel:#0c0f18;
+  --panel2:#111522;
+  --text:#f4f7ff;
+  --muted:#8992a8;
+  --line:rgba(255,255,255,.09);
+  --accent:#8ee7ff;
+  --accent2:#b69cff;
+  --good:#8affc1;
 }
 
-body {
-  margin: 0;
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  padding:0;
+  min-height:100%;
   background:
-    radial-gradient(circle at top, #17213d, #070912 55%, #03040a);
-  color: white;
-  font-family: Arial, sans-serif;
+    radial-gradient(circle at 50% 5%,rgba(100,130,255,.15),transparent 35%),
+    var(--bg);
+  color:var(--text);
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 
-.app {
-  max-width: 480px;
-  margin: auto;
-  min-height: 100vh;
-  padding: 25px 18px 100px;
+body{
+  display:flex;
+  justify-content:center;
 }
 
-/* HEADER */
-
-.header {
-  text-align: center;
+.app{
+  width:100%;
+  max-width:480px;
+  min-height:100vh;
+  padding:20px 16px 40px;
 }
 
-.eye {
-  font-size: 48px;
-  animation: blink 4s infinite;
-  filter: drop-shadow(0 0 18px #6e8cff);
+header{
+  text-align:center;
+  padding:10px 0 18px;
 }
 
-@keyframes blink {
-  0%, 44%, 48%, 100% {
-    transform: scaleY(1);
-  }
-
-  46% {
-    transform: scaleY(0.08);
-  }
+.brand{
+  font-size:13px;
+  letter-spacing:3px;
+  color:var(--accent);
+  font-weight:700;
 }
 
-.title {
-  font-size: 24px;
-  letter-spacing: 2px;
-  margin-top: 10px;
+h1{
+  margin:10px 0 4px;
+  font-size:27px;
+  line-height:1.15;
+  letter-spacing:.5px;
 }
 
-.subtitle {
-  color: #9ba8ca;
-  font-size: 11px;
-  letter-spacing: 3px;
+.subtitle{
+  font-size:15px;
+  font-weight:700;
+  letter-spacing:1.5px;
+  margin-top:9px;
 }
 
-/* CARD */
-
-.card {
-  margin-top: 18px;
-  padding: 20px;
-  border-radius: 24px;
-  background: rgba(17,22,40,.82);
-  border: 1px solid #2b3654;
-  box-shadow: 0 15px 40px rgba(0,0,0,.4);
+.subtitle span{
+  display:inline-block;
+  margin:0 2px;
 }
 
-h2 {
-  font-size: 15px;
-  letter-spacing: 1px;
+.small{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.5;
+}
+
+/* EYE */
+
+.eye-stage{
+  height:205px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+}
+
+.eye-glow{
+  position:absolute;
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  background:radial-gradient(circle,
+    rgba(142,231,255,.23),
+    rgba(142,231,255,.07) 40%,
+    transparent 72%);
+  animation:pulse 3s ease-in-out infinite;
+}
+
+.eye{
+  position:relative;
+  width:112px;
+  height:70px;
+  border:3px solid rgba(230,245,255,.95);
+  border-radius:75% 15%;
+  transform:rotate(0deg);
+  box-shadow:
+    0 0 15px rgba(142,231,255,.55),
+    0 0 45px rgba(142,231,255,.25);
+  animation:blink 5s infinite;
+}
+
+.eye::before{
+  content:"";
+  position:absolute;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 50% 50%,
+      #05060b 0 16%,
+      #9feaff 17% 32%,
+      #4f6dff 33% 54%,
+      #12172a 55%);
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  box-shadow:0 0 22px rgba(142,231,255,.7);
+}
+
+@keyframes blink{
+  0%,42%,46%,100%{transform:scaleY(1)}
+  44%{transform:scaleY(.08)}
+}
+
+@keyframes pulse{
+  0%,100%{transform:scale(.85);opacity:.55}
+  50%{transform:scale(1.15);opacity:1}
 }
 
 /* BATTERY */
 
-.battery {
-  width: 190px;
-  height: 72px;
-  border: 3px solid #9badde;
-  border-radius: 14px;
-  padding: 6px;
-  margin: 20px auto 10px;
-  position: relative;
+.battery-wrap{
+  margin:0 auto 18px;
+  max-width:360px;
 }
 
-.battery:after {
-  content: "";
-  position: absolute;
-  right: -12px;
-  top: 21px;
-  width: 9px;
-  height: 25px;
-  border: 2px solid #9badde;
-  border-left: 0;
-  border-radius: 0 5px 5px 0;
+.battery{
+  height:27px;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:9px;
+  padding:3px;
+  position:relative;
+  background:#080a11;
 }
 
-.battery-fill {
-  height: 100%;
-  width: 7%;
-  border-radius: 8px;
-  background: linear-gradient(
-    90deg,
-    #627dff,
-    #d2dcff
-  );
+.battery::after{
+  content:"";
+  position:absolute;
+  right:-7px;
+  top:7px;
+  width:5px;
+  height:11px;
+  border-radius:0 3px 3px 0;
+  background:rgba(255,255,255,.35);
 }
 
-.percent {
-  text-align: center;
-  font-size: 30px;
-  font-weight: bold;
+.battery-fill{
+  height:100%;
+  width:6.66%;
+  border-radius:6px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  transition:width .5s ease;
+  box-shadow:0 0 14px rgba(142,231,255,.4);
 }
 
-.day {
-  text-align: center;
-  margin-top: 8px;
-  font-size: 19px;
+.progress-text{
+  text-align:center;
+  margin-top:7px;
+  font-size:12px;
+  color:var(--muted);
 }
 
-.theme {
-  text-align: center;
-  color: #9db5ff;
-  margin-top: 5px;
+/* CARDS */
+
+.card{
+  background:linear-gradient(145deg,
+    rgba(18,22,34,.95),
+    rgba(8,10,17,.96));
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:18px;
+  margin:13px 0;
+  box-shadow:0 18px 45px rgba(0,0,0,.25);
 }
 
-/* BUTTON */
-
-button {
-  width: 100%;
-  padding: 13px;
-  margin-top: 12px;
-  border-radius: 14px;
-  border: 1px solid #394767;
-  background: #171e31;
-  color: white;
-  font-size: 14px;
+.day-number{
+  font-size:12px;
+  color:var(--accent);
+  letter-spacing:2px;
+  font-weight:800;
 }
 
-button:hover {
-  background: #27345a;
+.day-title{
+  font-size:24px;
+  font-weight:800;
+  margin:6px 0;
 }
 
-/* FREQUENCIES */
-
-.frequency-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
+.frequency{
+  font-size:42px;
+  font-weight:900;
+  letter-spacing:-1px;
+  margin:12px 0;
 }
 
-.frequency {
-  padding: 12px 5px;
-  text-align: center;
-  border-radius: 12px;
-  border: 1px solid #303b59;
-  background: #12182a;
+.frequency span{
+  font-size:15px;
+  color:var(--muted);
+  font-weight:500;
 }
 
-.frequency.active {
-  border-color: #9db3ff;
-  background: #26345b;
+.experience-text{
+  color:#b9c1d3;
+  font-size:14px;
+  line-height:1.65;
+}
+
+button{
+  width:100%;
+  border:0;
+  border-radius:14px;
+  padding:14px 16px;
+  margin-top:10px;
+  color:#071018;
+  background:linear-gradient(135deg,var(--accent),#d2c0ff);
+  font-weight:900;
+  font-size:14px;
+  letter-spacing:.5px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+button:active{
+  transform:scale(.98);
+}
+
+button.secondary{
+  background:#171b29;
+  color:#dce4f4;
+  border:1px solid var(--line);
+}
+
+button.danger{
+  background:#21141a;
+  color:#ffb9c7;
+  border:1px solid rgba(255,120,150,.2);
+}
+
+button:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+}
+
+/* LIVE */
+
+.live{
+  display:none;
+  text-align:center;
+}
+
+.live.active{
+  display:block;
+}
+
+.live-circle{
+  width:145px;
+  height:145px;
+  border-radius:50%;
+  margin:20px auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(142,231,255,.35);
+  background:radial-gradient(circle,
+    rgba(142,231,255,.17),
+    rgba(20,25,40,.8) 65%);
+  box-shadow:0 0 50px rgba(142,231,255,.16);
+  animation:livepulse 2.5s ease-in-out infinite;
+}
+
+@keyframes livepulse{
+  0%,100%{transform:scale(.96)}
+  50%{transform:scale(1.05)}
+}
+
+.live-time{
+  font-size:28px;
+  font-weight:900;
+}
+
+.live-instruction{
+  font-size:19px;
+  font-weight:800;
+  min-height:55px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.live-sub{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.5;
 }
 
 /* SENSES */
 
-.senses {
-  display: grid;
-  grid-template-columns: repeat(5,1fr);
-  gap: 6px;
+.senses{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:9px;
+  margin-top:14px;
 }
 
-.sense {
-  text-align: center;
-  padding: 10px 3px;
-  border: 1px solid #303a55;
-  border-radius: 12px;
+.sense{
+  min-height:90px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:13px;
+  background:#0b0e17;
 }
 
-.sense-icon {
-  font-size: 21px;
+.sense .icon{
+  font-size:27px;
 }
 
-.sense-name {
-  font-size: 9px;
-  color: #9da8c8;
-  margin-top: 5px;
+.sense b{
+  display:block;
+  margin-top:5px;
+  font-size:13px;
+}
+
+.sense p{
+  margin:5px 0 0;
+  color:var(--muted);
+  font-size:11px;
 }
 
 /* JOURNEY */
 
-.journey {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 7px;
+.journey{
+  display:flex;
+  gap:5px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin:17px 0;
 }
 
-.dot {
-  width: 27px;
-  height: 27px;
-  border-radius: 50%;
-  background: #151b2b;
-  border: 1px solid #303b55;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 9px;
+.dot{
+  width:19px;
+  height:19px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.18);
+  background:#0b0e15;
+  font-size:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#687188;
 }
 
-.dot.active {
-  border-color: #a1b5ff;
+.dot.current{
+  border-color:var(--accent);
+  color:var(--accent);
+  box-shadow:0 0 9px rgba(142,231,255,.3);
 }
 
-.dot.completed {
-  background: #30483a;
-  border-color: #70ae87;
+.dot.done{
+  background:rgba(138,255,193,.15);
+  border-color:rgba(138,255,193,.5);
+  color:var(--good);
 }
 
-.note {
-  color: #9da7bf;
-  font-size: 11px;
-  line-height: 1.6;
+/* INFO */
+
+.info{
+  color:#aab3c6;
+  font-size:12px;
+  line-height:1.65;
 }
 
-/* BOTTOM */
-
-.bottom {
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(480px,100%);
-  height: 65px;
-  background: rgba(7,9,17,.94);
-  border-top: 1px solid #242d44;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+footer{
+  text-align:center;
+  margin-top:25px;
+  color:#697287;
+  font-size:10px;
+  line-height:1.7;
 }
 
-.bottom div {
-  text-align: center;
-  color: #8d97b0;
-  font-size: 9px;
+.footer-link{
+  color:#aeb8cc;
+  cursor:pointer;
+  text-decoration:underline;
 }
 
-.bottom-icon {
-  font-size: 17px;
-  margin-bottom: 3px;
+/* MODAL */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.78);
+  z-index:50;
+  padding:20px;
+  align-items:center;
+  justify-content:center;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  width:100%;
+  max-width:440px;
+  max-height:85vh;
+  overflow:auto;
+  background:#0c101a;
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:20px;
+}
+
+.modal-box h2{
+  margin-top:0;
+}
+
+.modal-box p{
+  color:#adb6c8;
+  font-size:13px;
+  line-height:1.7;
+}
+
+.install{
+  display:none;
+}
+
+@media(min-width:700px){
+  .app{
+    padding-top:35px;
+  }
 }
 </style>
 </head>
@@ -262,422 +467,938 @@ button:hover {
 
 <div class="app">
 
-  <!-- HEADER -->
+<header>
+  <div class="brand">KEMP EYE</div>
 
-  <div class="header">
+  <h1>KEMP EYE REVERBERANCE 👁</h1>
 
-    <div class="eye">👁</div>
-
-    <div class="title">
-      KEMP EYE RESONANCE
-    </div>
-
-    <div class="subtitle">
-      15-DAY RESONANCE PRACTICE
-    </div>
-
+  <div class="subtitle">
+    <span>15-DAY</span>
+    <span>Reverberance</span>
+    <span>PRACTICE</span>
   </div>
 
+  <div class="small" style="margin-top:8px">
+    Experience → Observe → Complete → Continue
+  </div>
+</header>
 
-  <!-- CHARGING STATION -->
+<div class="eye-stage">
+  <div class="eye-glow"></div>
+  <div class="eye"></div>
+</div>
 
-  <div class="card">
+<div class="battery-wrap">
+  <div class="battery">
+    <div class="battery-fill" id="batteryFill"></div>
+  </div>
+  <div class="progress-text" id="progressText">Day 1 of 15 · 7%</div>
+</div>
 
-    <h2 style="text-align:center;">
-      RESONANCE CHARGING STATION
-    </h2>
+<div class="journey" id="journey"></div>
 
-    <div class="battery">
-      <div class="battery-fill"
-           id="batteryFill"></div>
-    </div>
+<section class="card">
 
-    <div class="percent" id="percent">
-      7%
-    </div>
+  <div class="day-number" id="dayNumber">DAY 1</div>
 
-    <div class="day" id="day">
-      DAY 1
-    </div>
+  <div class="day-title" id="dayTitle">174 Hz</div>
 
-    <div class="theme" id="theme">
-      174 Hz
-    </div>
-
-    <button onclick="experience()">
-      ▶ PLAY EXPERIENCE
-    </button>
-
-    <button onclick="completeDay()">
-      COMPLETE DAY
-    </button>
-
+  <div class="frequency" id="frequencyDisplay">
+    174 <span>Hz</span>
   </div>
 
+  <div class="experience-text" id="experienceText">
+    A frequency-only listening experience. Sit comfortably and allow
+    the sound to be heard without needing to analyse or record anything.
+  </div>
 
-  <!-- SOLFEGGIO -->
+  <button id="startBtn">START LIVE EXPERIENCE</button>
 
-  <div class="card">
+  <button id="completeBtn" class="secondary" disabled>
+    COMPLETE DAY
+  </button>
 
-    <h2>
-      9 SOLFEGGIO EXPERIENCES
-    </h2>
+</section>
 
-    <div class="frequency-grid">
+<section class="card live" id="livePanel">
 
-      <div class="frequency" onclick="selectDay(1)">
-        DAY 1<br>174 Hz
-      </div>
+  <div class="day-number" id="liveDay">LIVE EXPERIENCE</div>
 
-      <div class="frequency" onclick="selectDay(2)">
-        DAY 2<br>285 Hz
-      </div>
+  <div class="live-circle">
+    <div class="live-time" id="liveTime">10:00</div>
+  </div>
 
-      <div class="frequency" onclick="selectDay(3)">
-        DAY 3<br>396 Hz
-      </div>
+  <div class="live-instruction" id="liveInstruction">
+    Experience the sound.
+  </div>
 
-      <div class="frequency" onclick="selectDay(4)">
-        DAY 4<br>417 Hz
-      </div>
+  <div class="live-sub" id="liveSub">
+    Nothing to record. Simply remain with the experience.
+  </div>
 
-      <div class="frequency" onclick="selectDay(5)">
-        DAY 5<br>528 Hz
-      </div>
+  <button class="secondary" id="stopBtn">STOP EXPERIENCE</button>
 
-      <div class="frequency" onclick="selectDay(6)">
-        DAY 6<br>639 Hz
-      </div>
+</section>
 
-      <div class="frequency" onclick="selectDay(7)">
-        DAY 7<br>741 Hz
-      </div>
+<section class="card" id="sensesCard" style="display:none">
 
-      <div class="frequency" onclick="selectDay(8)">
-        DAY 8<br>852 Hz
-      </div>
+  <div class="day-number">DAY 13</div>
+  <div class="day-title">Five-Sense Reverberance</div>
 
-      <div class="frequency" onclick="selectDay(9)">
-        DAY 9<br>963 Hz
-      </div>
+  <div class="experience-text">
+    Move through each sense directly. There is nothing to enter,
+    answer, or record.
+  </div>
 
+  <div class="senses">
+    <div class="sense">
+      <div class="icon">👁</div>
+      <b>SEE</b>
+      <p>Gently observe one object.</p>
     </div>
 
-    <p class="note">
-      Simply listen and experience.
-      No response is required.
+    <div class="sense">
+      <div class="icon">👂</div>
+      <b>HEAR</b>
+      <p>Allow surrounding sound to arrive.</p>
+    </div>
+
+    <div class="sense">
+      <div class="icon">✋</div>
+      <b>FEEL</b>
+      <p>Feel contact, temperature and touch.</p>
+    </div>
+
+    <div class="sense">
+      <div class="icon">👃</div>
+      <b>SMELL</b>
+      <p>Notice a familiar fragrance.</p>
+    </div>
+
+    <div class="sense">
+      <div class="icon">👅</div>
+      <b>TASTE</b>
+      <p>Notice an existing taste or a small sip.</p>
+    </div>
+  </div>
+
+</section>
+
+<section class="card" id="infoCard">
+
+  <div class="day-number">THE PRACTICE</div>
+
+  <div class="info">
+    You don't need to record the experience.
+    You don't need to explain the experience.
+    Simply experience it. Observe it. Let it be.
+    <br><br>
+    The frequency audio in this preview is generated live by
+    your browser. No external audio recording is used.
+  </div>
+
+</section>
+
+<button class="secondary install" id="installBtn">
+  INSTALL KEMP EYE AS APP
+</button>
+
+<button class="danger" id="resetBtn">
+  RESET PROGRESS → DAY 1
+</button>
+
+<footer>
+  <div>© @KishanBali / KEMP Wisdom Publications</div>
+  <div>All Rights Reserved</div>
+  <div style="margin-top:7px">
+    <span class="footer-link" id="disclaimerBtn">
+      Health &amp; Safety Disclaimer
+    </span>
+  </div>
+  <div style="margin-top:5px">
+    Chrome Mobile / PWA Preview · Version 1.0
+  </div>
+</footer>
+
+</div>
+
+<!-- DISCLAIMER -->
+
+<div class="modal" id="disclaimerModal">
+
+  <div class="modal-box">
+
+    <h2>Health &amp; Safety</h2>
+
+    <p>
+      This application provides personal listening and sensory
+      experiences. It is not medical treatment, medical advice,
+      diagnosis, or a substitute for professional care.
     </p>
 
-  </div>
-
-
-  <!-- BINAURAL -->
-
-  <div class="card">
-
-    <h2>
-      BINAURAL LISTENING
-    </h2>
-
-    <button onclick="selectDay(10)">
-      DAY 10 — ALPHA
-    </button>
-
-    <button onclick="selectDay(11)">
-      DAY 11 — BETA
-    </button>
-
-    <button onclick="selectDay(12)">
-      DAY 12 — GAMMA
-    </button>
-
-    <p class="note">
-      Headphones recommended for the stereo
-      listening experience.
+    <p>
+      Keep listening volume comfortable and low. Do not listen at
+      excessive volume or for longer than feels comfortable.
     </p>
 
-  </div>
-
-
-  <!-- FIVE SENSES -->
-
-  <div class="card">
-
-    <h2>
-      DAY 13 — FIVE-SENSE RESONANCE
-    </h2>
-
-    <div class="senses">
-
-      <div class="sense">
-        <div class="sense-icon">👁</div>
-        <div class="sense-name">SEE</div>
-      </div>
-
-      <div class="sense">
-        <div class="sense-icon">👂</div>
-        <div class="sense-name">HEAR</div>
-      </div>
-
-      <div class="sense">
-        <div class="sense-icon">✋</div>
-        <div class="sense-name">FEEL</div>
-      </div>
-
-      <div class="sense">
-        <div class="sense-icon">👃</div>
-        <div class="sense-name">SMELL</div>
-      </div>
-
-      <div class="sense">
-        <div class="sense-icon">👅</div>
-        <div class="sense-name">TASTE</div>
-      </div>
-
-    </div>
-
-    <p class="note">
-      Experience each sense.
-      Nothing to record.
+    <p>
+      Stop the experience if you experience discomfort, dizziness,
+      headache, ringing in the ears, anxiety, or any unusual reaction.
     </p>
 
-  </div>
-
-
-  <!-- SILENCE -->
-
-  <div class="card">
-
-    <h2>
-      DAY 14 — SILENCE
-    </h2>
-
-    <p class="note">
-      No audio. No instruction.
-      Simply experience silence and observe.
+    <p>
+      Never listen while driving, operating machinery, or when
+      environmental awareness is required.
     </p>
 
-  </div>
-
-
-  <!-- INTEGRATION -->
-
-  <div class="card">
-
-    <h2>
-      DAY 15 — RESONANCE INTEGRATION
-    </h2>
-
-    <p class="note">
-      Let the journey settle.
-      Experience. Observe.
-      Nothing needs to be explained.
+    <p>
+      The frequency numbers displayed in this application describe
+      the sound being generated. No claim is made that a particular
+      frequency treats, cures, prevents, or changes a medical
+      condition.
     </p>
 
-  </div>
-
-
-  <!-- JOURNEY -->
-
-  <div class="card">
-
-    <h2>
-      15-DAY JOURNEY
-    </h2>
-
-    <div class="journey" id="journey"></div>
-
-    <p class="note" style="text-align:center;">
-      No personal information is collected.
-    </p>
+    <button id="closeDisclaimer">CLOSE</button>
 
   </div>
 
 </div>
-
-
-<!-- BOTTOM NAV -->
-
-<div class="bottom">
-
-  <div>
-    <div class="bottom-icon">⌂</div>
-    HOME
-  </div>
-
-  <div>
-    <div class="bottom-icon">◉</div>
-    DAYS
-  </div>
-
-  <div>
-    <div class="bottom-icon">◒</div>
-    SOUND
-  </div>
-
-  <div>
-    <div class="bottom-icon">👁</div>
-    RESONANCE
-  </div>
-
-</div>
-
 
 <script>
 
+/* =========================================================
+   KEMP EYE REVERBERANCE
+   15-DAY REVERBERANCE PRACTICE
+   Frequency audio generated locally in the browser.
+   No external audio files.
+   No binaural audio.
+   No data collection.
+========================================================= */
+
+const days = [
+
+  {
+    day:1,
+    title:"174 Hz",
+    frequency:174,
+    duration:600,
+    type:"frequency"
+  },
+
+  {
+    day:2,
+    title:"285 Hz",
+    frequency:285,
+    duration:600,
+    type:"frequency"
+  },
+
+  {
+    day:3,
+    title:"396 Hz",
+    frequency:396,
+    duration:600,
+    type:"frequency"
+  },
+
+  {
+    day:4,
+    title:"417 Hz",
+    frequency:417,
+    duration:600,
+    type:"frequency"
+  },
+
+  {
+    day:5,
+    title:"528 Hz",
+    frequency:528,
+    duration:600,
+    type:"frequency"
+  },
+
+  {
+    day:6,
+    title:"639 Hz",
+    frequency:639,
+    duration:600,
+    type:"frequency"
+  },
+
+  {
+    day:7,
+    title:"741 Hz",
+    frequency:741,
+    duration:600,
+    type:"frequency"
+  },
+
+  {
+    day:8,
+    title:"852 Hz",
+    frequency:852,
+    duration:600,
+    type:"frequency"
+  },
+
+  {
+    day:9,
+    title:"963 Hz",
+    frequency:963,
+    duration:600,
+    type:"frequency"
+  },
+
+  {
+    day:10,
+    title:"Frequency",
+    frequency:220,
+    duration:600,
+    type:"frequency"
+  },
+
+  {
+    day:11,
+    title:"Frequency",
+    frequency:440,
+    duration:600,
+    type:"frequency"
+  },
+
+  {
+    day:12,
+    title:"Frequency",
+    frequency:660,
+    duration:600,
+    type:"frequency"
+  },
+
+  {
+    day:13,
+    title:"Five-Sense Reverberance",
+    duration:300,
+    type:"senses"
+  },
+
+  {
+    day:14,
+    title:"Silence",
+    duration:300,
+    type:"silence"
+  },
+
+  {
+    day:15,
+    title:"Reverberance Integration",
+    duration:600,
+    type:"integration"
+  }
+
+];
+
 let currentDay = 1;
+let completed = new Set();
 
-let completed = [];
+let audioContext = null;
+let oscillator = null;
+let gainNode = null;
 
+let timer = null;
+let remaining = 0;
+let running = false;
 
-/* SELECT DAY */
+let deferredInstallPrompt = null;
 
-function selectDay(day) {
+/* ELEMENTS */
 
-  currentDay = day;
+const dayNumber = document.getElementById("dayNumber");
+const dayTitle = document.getElementById("dayTitle");
+const frequencyDisplay = document.getElementById("frequencyDisplay");
+const experienceText = document.getElementById("experienceText");
 
-  updateScreen();
+const startBtn = document.getElementById("startBtn");
+const completeBtn = document.getElementById("completeBtn");
 
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
+const livePanel = document.getElementById("livePanel");
+const liveDay = document.getElementById("liveDay");
+const liveTime = document.getElementById("liveTime");
+const liveInstruction = document.getElementById("liveInstruction");
+const liveSub = document.getElementById("liveSub");
+
+const stopBtn = document.getElementById("stopBtn");
+
+const sensesCard = document.getElementById("sensesCard");
+
+const batteryFill = document.getElementById("batteryFill");
+const progressText = document.getElementById("progressText");
+
+const journey = document.getElementById("journey");
+
+/* JOURNEY */
+
+function buildJourney(){
+
+  journey.innerHTML = "";
+
+  days.forEach(d => {
+
+    const dot = document.createElement("div");
+
+    dot.className = "dot";
+
+    if(d.day === currentDay){
+      dot.classList.add("current");
+    }
+
+    if(completed.has(d.day)){
+      dot.classList.add("done");
+    }
+
+    dot.textContent = d.day;
+
+    dot.title = "Day " + d.day;
+
+    dot.onclick = () => {
+
+      if(running) return;
+
+      currentDay = d.day;
+
+      render();
+
+    };
+
+    journey.appendChild(dot);
+
   });
 
 }
 
+/* RENDER */
 
-/* UPDATE SCREEN */
+function render(){
 
-function updateScreen() {
+  const d = days[currentDay - 1];
 
-  document.getElementById("day")
-    .innerText = "DAY " + currentDay;
+  dayNumber.textContent = "DAY " + d.day;
 
+  dayTitle.textContent = d.title;
 
-  let themes = [
+  if(d.type === "frequency"){
 
-    "174 Hz",
-    "285 Hz",
-    "396 Hz",
-    "417 Hz",
-    "528 Hz",
-    "639 Hz",
-    "741 Hz",
-    "852 Hz",
-    "963 Hz",
+    frequencyDisplay.innerHTML =
+      d.frequency + " <span>Hz</span>";
 
-    "ALPHA • BINAURAL",
-    "BETA • BINAURAL",
-    "GAMMA • BINAURAL",
+    experienceText.textContent =
+      "A frequency-only listening experience. Sit comfortably " +
+      "and allow the sound to be heard without needing to analyse " +
+      "or record anything.";
 
-    "FIVE-SENSE RESONANCE",
-    "SILENCE",
-    "RESONANCE INTEGRATION"
-
-  ];
-
-  document.getElementById("theme")
-    .innerText = themes[currentDay - 1];
-
-
-  let percentage =
-    Math.round(
-      (completed.length / 15) * 100
-    );
-
-  if (percentage < 7)
-    percentage = 7;
-
-  document.getElementById("percent")
-    .innerText = percentage + "%";
-
-  document.getElementById("batteryFill")
-    .style.width = percentage + "%";
-
-
-  renderJourney();
-
-}
-
-
-/* COMPLETE DAY */
-
-function completeDay() {
-
-  if (!completed.includes(currentDay)) {
-
-    completed.push(currentDay);
+    sensesCard.style.display = "none";
 
   }
 
-  if (currentDay < 15) {
+  else if(d.type === "senses"){
+
+    frequencyDisplay.innerHTML =
+      "👁 👂 ✋ 👃 👅";
+
+    experienceText.textContent =
+      "A live five-sense experience. Move through seeing, hearing, " +
+      "feeling, smelling and tasting without recording anything.";
+
+    sensesCard.style.display = "block";
+
+  }
+
+  else if(d.type === "silence"){
+
+    frequencyDisplay.innerHTML =
+      "SILENCE";
+
+    experienceText.textContent =
+      "A live five-minute silence experience. No sound is generated.";
+
+    sensesCard.style.display = "none";
+
+  }
+
+  else{
+
+    frequencyDisplay.innerHTML =
+      "∿";
+
+    experienceText.textContent =
+      "A live integration experience. Feel, breathe naturally, " +
+      "rest and allow the experience to settle.";
+
+    sensesCard.style.display = "none";
+
+  }
+
+  const percent =
+    Math.round(((currentDay - 1) / 15) * 100);
+
+  batteryFill.style.width =
+    Math.max(6.66,percent) + "%";
+
+  progressText.textContent =
+    "Day " + currentDay + " of 15 · " + percent + "%";
+
+  completeBtn.disabled =
+    !completed.has(currentDay) &&
+    !running;
+
+  completeBtn.textContent =
+    completed.has(currentDay)
+      ? "DAY COMPLETED"
+      : "COMPLETE DAY";
+
+  buildJourney();
+
+}
+
+/* AUDIO */
+
+function startTone(freq){
+
+  stopAudio();
+
+  audioContext =
+    new (window.AudioContext ||
+         window.webkitAudioContext)();
+
+  oscillator =
+    audioContext.createOscillator();
+
+  gainNode =
+    audioContext.createGain();
+
+  oscillator.type = "sine";
+
+  oscillator.frequency.value = freq;
+
+  /*
+    Gentle fade-in.
+    This is intentionally low gain.
+  */
+
+  gainNode.gain.setValueAtTime(
+    0,
+    audioContext.currentTime
+  );
+
+  gainNode.gain.linearRampToValueAtTime(
+    0.08,
+    audioContext.currentTime + 2
+  );
+
+  oscillator.connect(gainNode);
+
+  gainNode.connect(audioContext.destination);
+
+  oscillator.start();
+
+}
+
+function stopAudio(){
+
+  if(oscillator){
+
+    try{
+      oscillator.stop();
+    }catch(e){}
+
+    oscillator.disconnect();
+    oscillator = null;
+  }
+
+  if(gainNode){
+
+    gainNode.disconnect();
+    gainNode = null;
+  }
+
+  if(audioContext){
+
+    try{
+      audioContext.close();
+    }catch(e){}
+
+    audioContext = null;
+  }
+
+}
+
+/* LIVE EXPERIENCE */
+
+function startExperience(){
+
+  if(running) return;
+
+  const d = days[currentDay - 1];
+
+  running = true;
+
+  remaining = d.duration;
+
+  livePanel.classList.add("active");
+
+  startBtn.disabled = true;
+
+  completeBtn.disabled = true;
+
+  liveDay.textContent =
+    "DAY " + currentDay + " · LIVE";
+
+  if(d.type === "frequency"){
+
+    startTone(d.frequency);
+
+    liveInstruction.textContent =
+      "Experience the frequency.";
+
+    liveSub.textContent =
+      d.frequency +
+      " Hz · Nothing to record. Simply experience it.";
+
+  }
+
+  else if(d.type === "senses"){
+
+    stopAudio();
+
+    liveInstruction.textContent =
+      "SEE";
+
+    liveSub.textContent =
+      "Gently observe one object. Do not name it.";
+
+  }
+
+  else if(d.type === "silence"){
+
+    stopAudio();
+
+    liveInstruction.textContent =
+      "SILENCE";
+
+    liveSub.textContent =
+      "Remain with silence. Nothing needs to happen.";
+
+  }
+
+  else{
+
+    stopAudio();
+
+    liveInstruction.textContent =
+      "FEEL";
+
+    liveSub.textContent =
+      "One hand on the chest. Breathe naturally. Rest.";
+
+  }
+
+  updateTimer();
+
+  timer = setInterval(updateTimer,1000);
+
+}
+
+/* TIMER */
+
+function updateTimer(){
+
+  const d = days[currentDay - 1];
+
+  const minutes =
+    Math.floor(remaining / 60);
+
+  const seconds =
+    remaining % 60;
+
+  liveTime.textContent =
+    String(minutes).padStart(2,"0") +
+    ":" +
+    String(seconds).padStart(2,"0");
+
+  /* DAY 13 — FIVE SENSES */
+
+  if(d.type === "senses"){
+
+    const elapsed =
+      d.duration - remaining;
+
+    const stage =
+      Math.min(4,Math.floor(elapsed / 60));
+
+    const instructions = [
+
+      [
+        "👁 SEE",
+        "Gently observe one object without naming it."
+      ],
+
+      [
+        "👂 HEAR",
+        "Allow the surrounding sounds to arrive."
+      ],
+
+      [
+        "✋ FEEL",
+        "Feel contact, temperature and touch."
+      ],
+
+      [
+        "👃 SMELL",
+        "Notice a familiar fragrance."
+      ],
+
+      [
+        "👅 TASTE",
+        "Notice an existing taste or take a small sip."
+      ]
+
+    ];
+
+    liveInstruction.textContent =
+      instructions[stage][0];
+
+    liveSub.textContent =
+      instructions[stage][1];
+
+  }
+
+  /* DAY 15 */
+
+  if(d.type === "integration"){
+
+    const elapsed =
+      d.duration - remaining;
+
+    const cycle =
+      Math.floor(elapsed / 120) % 3;
+
+    const integration = [
+
+      [
+        "FEEL",
+        "Place one hand on your chest. Feel the contact."
+      ],
+
+      [
+        "BREATHE",
+        "Allow breathing to remain natural."
+      ],
+
+      [
+        "REST",
+        "Let everything settle without effort."
+      ]
+
+    ];
+
+    liveInstruction.textContent =
+      integration[cycle][0];
+
+    liveSub.textContent =
+      integration[cycle][1];
+
+  }
+
+  remaining--;
+
+  if(remaining < 0){
+
+    finishExperience();
+
+  }
+
+}
+
+/* FINISH */
+
+function finishExperience(){
+
+  clearInterval(timer);
+
+  timer = null;
+
+  stopAudio();
+
+  running = false;
+
+  livePanel.classList.remove("active");
+
+  startBtn.disabled = false;
+
+  completed.add(currentDay);
+
+  completeBtn.disabled = false;
+
+  completeBtn.textContent =
+    "DAY COMPLETED";
+
+  if(currentDay < 15){
 
     currentDay++;
 
   }
 
-  updateScreen();
+  render();
 
 }
 
+/* STOP */
 
-/* JOURNEY DOTS */
+function stopExperience(){
 
-function renderJourney() {
+  clearInterval(timer);
 
-  let html = "";
+  timer = null;
 
-  for (let i = 1; i <= 15; i++) {
+  stopAudio();
 
-    let className = "dot";
+  running = false;
 
-    if (i === currentDay)
-      className += " active";
+  livePanel.classList.remove("active");
 
-    if (completed.includes(i))
-      className += " completed";
+  startBtn.disabled = false;
 
-    html += `
-      <div class="${className}"
-           onclick="selectDay(${i})">
-        ${i}
-      </div>
-    `;
+  completeBtn.disabled = false;
+
+  render();
+
+}
+
+/* COMPLETE */
+
+completeBtn.addEventListener("click",()=>{
+
+  if(running) return;
+
+  completed.add(currentDay);
+
+  if(currentDay < 15){
+
+    currentDay++;
 
   }
 
-  document.getElementById("journey")
-    .innerHTML = html;
+  render();
 
-}
+});
 
+/* START */
 
-/* EXPERIENCE */
+startBtn.addEventListener(
+  "click",
+  startExperience
+);
 
-function experience() {
+stopBtn.addEventListener(
+  "click",
+  stopExperience
+);
 
-  if (currentDay === 14) {
+/* RESET */
+
+document.getElementById("resetBtn")
+.addEventListener("click",()=>{
+
+  if(running){
+
+    stopExperience();
+
+  }
+
+  const confirmed =
+    confirm(
+      "Reset KEMP EYE REVERBERANCE progress to Day 1?"
+    );
+
+  if(!confirmed) return;
+
+  completed.clear();
+
+  currentDay = 1;
+
+  render();
+
+});
+
+/* DISCLAIMER */
+
+const disclaimerModal =
+  document.getElementById("disclaimerModal");
+
+document.getElementById("disclaimerBtn")
+.addEventListener("click",()=>{
+
+  disclaimerModal.classList.add("show");
+
+});
+
+document.getElementById("closeDisclaimer")
+.addEventListener("click",()=>{
+
+  disclaimerModal.classList.remove("show");
+
+});
+
+disclaimerModal.addEventListener("click",(e)=>{
+
+  if(e.target === disclaimerModal){
+
+    disclaimerModal.classList.remove("show");
+
+  }
+
+});
+
+/* INSTALL */
+
+window.addEventListener(
+  "beforeinstallprompt",
+  e => {
+
+    e.preventDefault();
+
+    deferredInstallPrompt = e;
+
+    document.getElementById(
+      "installBtn"
+    ).style.display = "block";
+
+  }
+);
+
+document.getElementById("installBtn")
+.addEventListener("click",async()=>{
+
+  if(!deferredInstallPrompt){
 
     alert(
-      "DAY 14 — SILENCE\n\n" +
-      "No audio.\n" +
-      "Simply experience."
+      "In Chrome mobile, open the browser menu ⋮ and choose " +
+      "'Add to Home screen' or 'Install app'."
     );
 
     return;
 
   }
 
-  alert(
-    "DAY " + currentDay +
-    "\n\nExperience only.\n" +
-    "Nothing to record."
-  );
+  deferredInstallPrompt.prompt();
 
-}
+  await deferredInstallPrompt.userChoice;
 
+  deferredInstallPrompt = null;
 
-updateScreen();
+});
+
+/* START */
+
+render();
 
 </script>
 
