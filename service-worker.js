@@ -1,5 +1,5 @@
-const CACHE = 'kemp-eye-observation-pwa-v1';
-const CORE = ['./','./index.html','./manifest.json','./icon-192.svg','./icon-512.svg'];
+const CACHE = 'kemp-eye-observation-pwa-v2';
+const CORE = ['./','./index.html','./manifest.json','./icon-192.png','./icon-512.png'];
 
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE)).then(() => self.skipWaiting()));
