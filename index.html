@@ -7,7 +7,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="manifest" href="./manifest.json?v=2">
+<link rel="manifest" href="./manifest.json?v=3">
 <link rel="icon" href="./icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <title>KEMP EYE 👁 — 15-Day Observation Practice</title>
@@ -37,6 +37,8 @@
 const days=[174,196,220,247,262,285,320,341,384,396,417,432,528,741,963];
 let day=1,seconds=600,timer=null,audio=null,osc=null,gain=null,deferredPrompt=null;
 const $=id=>document.getElementById(id);
+function isInstalled(){return window.matchMedia('(display-mode: standalone)').matches||window.matchMedia('(display-mode: fullscreen)').matches||window.navigator.standalone===true}
+function hideInstallCard(){const card=$('installCard');if(card)card.style.display='none'}
 function render(){const f=days[day-1];$('dayNumber').textContent='DAY '+day;$('dayTitle').textContent=day<=12?'Observation':'Five-Sense Observation';$('frequencyDisplay').innerHTML=f+' <span>Hz</span>';$('progressText').textContent='Day '+day+' of 15 · '+Math.round(day/15*100)+'%';$('batteryFill').style.width=(day/15*100)+'%';$('completeBtn').disabled=true;$('sensesCard').style.display=day>=13?'block':'none';$('journey').innerHTML=days.map((_,i)=>'<div class="dot '+(i+1<day?'done ':'')+(i+1===day?'current':'')+'">'+(i+1)+'</div>').join('')}
 function format(t){return String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0')}
 async function startAudio(){audio=audio||new (window.AudioContext||window.webkitAudioContext)();await audio.resume();osc=audio.createOscillator();gain=audio.createGain();osc.type='sine';osc.frequency.value=days[day-1];gain.gain.value=.035;osc.connect(gain).connect(audio.destination);osc.start()}
@@ -46,8 +48,10 @@ $('stopBtn').onclick=()=>{clearInterval(timer);stopAudio();$('livePanel').classL
 $('completeBtn').onclick=()=>{clearInterval(timer);stopAudio();$('livePanel').classList.remove('active');if(day<15){day++;render();$('startBtn').disabled=false}else{$('startBtn').textContent='15-DAY PRACTICE COMPLETE';$('startBtn').disabled=true;$('completeBtn').disabled=true;$('progressText').textContent='15 of 15 · 100%'}};
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;$('installBtn').textContent='INSTALL KEMP EYE';$('installStatus').textContent='Tap Install KEMP EYE to add it to your phone.'});
 $('installBtn').onclick=async()=>{if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;return}if(/iPhone|iPad|iPod/i.test(navigator.userAgent)&&!window.MSStream){$('iosNote').style.display='block';$('installStatus').textContent='Open this page in Safari, then use Share → Add to Home Screen.'}else{$('installStatus').textContent='Open your browser menu (⋮) and choose Add to Home screen or Install app.'}};
-window.addEventListener('appinstalled',()=>{$('installCard').innerHTML='<div class="day-number">KEMP EYE</div><div class="day-title">Installed</div><div class="install-status">KEMP EYE is now installed on this device.</div>'});
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=2').catch(()=>{}))}
+window.addEventListener('appinstalled',()=>hideInstallCard());
+window.addEventListener('DOMContentLoaded',()=>{if(isInstalled())hideInstallCard()});
+if(isInstalled())hideInstallCard();
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js?v=3').catch(()=>{}))}
 render();
 </script>
 </body>
