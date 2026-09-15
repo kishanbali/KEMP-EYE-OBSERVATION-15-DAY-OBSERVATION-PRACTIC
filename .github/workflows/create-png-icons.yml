@@ -1,0 +1,36 @@
+name: Create PWA PNG Icons
+
+on:
+  push:
+    paths:
+      - 'icon-192.svg'
+      - 'icon-512.svg'
+      - 'manifest.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  icons:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate PNG icons
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install sharp --no-fund --no-audit
+          node - <<'NODE'
+          const sharp = require('sharp');
+          Promise.all([
+            sharp('icon-192.svg').png().toFile('icon-192.png'),
+            sharp('icon-512.svg').png().toFile('icon-512.png')
+          ]).then(() => console.log('PNG icons generated'));
+          NODE
+      - name: Commit generated icons
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add icon-192.png icon-512.png
+          git diff --cached --quiet || git commit -m "Generate PWA PNG icons"
+          git push
